@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/postcodes/WD33AQ"
+  },
+  "response": {
+    "status": 200,
+    "body": "{\n    \"result\" : {\n        \"admin_county\" : \"a mocked county\"\n    }\n}"
+  }
+}
