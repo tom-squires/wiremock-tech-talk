@@ -5,6 +5,6 @@
   },
   "response": {
     "status": 200,
-    "body": "{\n    \"result\" : {\n        \"admin_county\" : \"a mocked county\"\n    }\n}"
+    "body": "{\n    \"result\" : {\n        \"country\" : \"a mocked country\"\n    }\n}"
   }
 }

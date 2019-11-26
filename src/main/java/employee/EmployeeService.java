@@ -2,19 +2,19 @@ package employee;
 
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final PostcodesRepository postcodesRepository;
+    private final CountryRepository countryRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository,
-                           PostcodesRepository postcodesRepository) {
+                           CountryRepository countryRepository) {
         this.employeeRepository = employeeRepository;
-        this.postcodesRepository = postcodesRepository;
+        this.countryRepository = countryRepository;
     }
 
-    public String getCounty(Integer employeeId) {
+    public String getCountry(Integer employeeId) {
         Employee employee = employeeRepository.getEmployee(employeeId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        return postcodesRepository.getCounty(employee.getPostCode())
+        return countryRepository.getCountry(employee.getPostCode())
                 .orElseThrow(() -> new RuntimeException("Postcode not found"));
     }
 }

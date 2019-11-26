@@ -1,7 +1,7 @@
 import com.github.tomakehurst.wiremock.WireMockServer;
 import employee.EmployeeRepository;
 import employee.EmployeeService;
-import employee.PostcodesRepository;
+import employee.CountryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MocksTest {
     private EmployeeService employeeService = new EmployeeService(new EmployeeRepository(),
-            new PostcodesRepository("http://localhost:8080"));
+            new CountryRepository("http://localhost:9999"));
 
     private static WireMockServer wireMockServer = new WireMockServer();
 
@@ -26,19 +26,19 @@ public class MocksTest {
     }
 
     @Test
-    public void countyAsExpectedForEmployeeId1() {
+    public void countryAsExpectedForEmployeeId() {
         // When
         stubFor(get(urlEqualTo("/postcodes/WD33AQ"))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withBody("{\n" +
                                 "    \"result\" : {\n" +
-                                "        \"admin_county\" : \"a mocked county\"\n" +
+                                "        \"country\" : \"a mocked country\"\n" +
                                 "    }\n" +
                                 "}")
                 ));
 
         // Then
-        assertEquals("a mocked county", employeeService.getCounty(1));
+        assertEquals("a mocked country", employeeService.getCountry(1));
     }
 }
